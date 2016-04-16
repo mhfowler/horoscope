@@ -14,9 +14,9 @@ def send_text(msg, to_phone_number):
     msg = msg.encode('ascii', 'ignore')
     message = MIMEText(msg)
     message['Date'] = formatdate()
-    message['From'] = 'fishing_bot@gmail.com'
+    message['From'] = 'myfreehoroscope.today@gmail.com'
 
-    server.sendmail('fishing_bot@gmail.com', to_phone_number, message.as_string())
+    server.sendmail('myfreehoroscope.today@gmail.com', to_phone_number, message.as_string())
     server.quit()
 
 

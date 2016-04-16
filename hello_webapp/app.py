@@ -37,11 +37,6 @@ hello_helpers = get_hello_helpers_blueprint(db=db, template_dir=TEMPLATE_DIR)
 app.register_blueprint(hello_helpers)
 
 
-@app.route("/")
-def hello():
-    return render_template("hello.html")
-
-
 @app.route("/get_all_tix/")
 def get_all_tix_endpoint():
     active_alerts = db_session.query(FbAlert).all()
@@ -97,7 +92,7 @@ def add_alert_endpoint():
     })
 
 
-@app.route("/horoscope/")
+@app.route("/")
 def myfreehoroscope():
     active_alerts = db_session.query(FbAlert).all()
     return render_template('horoscope.html', active_alerts=active_alerts)
