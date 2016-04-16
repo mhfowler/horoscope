@@ -9,6 +9,6 @@ def get_test_objects(db):
 
 
 def create_test_object(db):
-    t = TestObject(name='test', email=str(random.randint(0, 1000)))
+    t = TestObject(key='test', value=str(random.randint(0, 1000)))
     db.session.add(t)
     db.session.commit()

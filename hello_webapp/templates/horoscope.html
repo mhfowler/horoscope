@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        .mainimg {
+            width:100%;
+        }
+        body {
+            width:100%;
+            margin:0px;
+            padding:0px;
+            background-image: url("/static/img/purple_background.jpg")
+        }
+
+        .alert-wrapper {
+            width: 375px;
+        {#            background-color:rgba(207, 207, 216, 0.4);#}
+            background-color:white;
+            margin-left: 35px;
+            margin-top: 35px;
+            min-height:80px;
+            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+            padding: 15px;
+            padding-bottom:30px;
+        {#            color:white;#}
+            color:black;
+        }
+
+        input.alert-input {
+            width:350px;
+            height:20px;
+            padding:5px;
+            margin-top:5px;
+        }
+        .input-wrapper {
+            width:350px;
+            margin-bottom:20px;
+            margin-top:10px;
+        }
+
+        .new-alert-form {
+            padding-top:10px;
+        }
+        p.mini-text{
+            font-size:10px;
+        }
+
+        .alert {
+            font-size:12px;
+            padding: 10px;
+            border: 1px solid blue;
+            margin-bottom:15px;
+            margin-top:15px;
+            height:41px;
+        }
+
+        .click-to-delete {
+            margin-top:5px;
+            color:red;
+        }
+        a.click-to-delete:hover {
+            cursor:pointer;
+            color: #b348ee;
+        }
+    </style>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/static/js/horoscope.js"></script>
+
+</head>
+<body>
+
+<div class="alert-wrapper">
+    {% if active_alerts %}
+        <h3 style="margin-top:0px;margin-bottom:0px;font-style:italic;">
+            Active Alerts
+        </h3>
+    {% endif %}
+    {% if active_alerts %}
+        {% for alert in active_alerts %}
+            <div class="alert">
+                <div class="facebooklink">
+                    <a class="fblink" href="https://www.facebook.com/events/{{ alert.fb_id }}/" data-fblink="{{ alert.fb_id }}">
+                        https://www.facebook.com/events/{{ alert.fb_id }}/
+                    </a>
+                </div>
+                <div class="phone" data-phone="{{ alert.phone_number }}">
+                    {{ alert.phone_number }}
+                </div>
+                <a class="click-to-delete">
+                    TURN OFF
+                </a>
+            </div>
+        {% endfor %}
+    {% else%}
+        <p>
+            There are currently no active alerts.
+        </p>
+    {% endif %}
+    <form class="new-alert-form">
+        <h3 style="margin-top:0px;margin-bottom:0px;font-style:italic;">
+            Create New Alert
+        </h3>
+        <div class="input-wrapper">
+            <label>Link To Facebook Event</label>
+            <input type="text" class='alert-input fb-input' name="facebooklink-input" placeholder="https://www.facebook.com/events/1510354015927592/">
+        </div>
+        <div class="input-wrapper">
+            <label>Your Service Provider</label>
+            <div style="margin-top:7px;">
+                <input type="radio" name="provider" value="ATT"/>
+                <span> AT&T</span>
+            </div>
+            <div>
+                <input type="radio" name="provider" value="VERIZON"/>
+                <span> Verizon</span>
+            </div>
+            <div>
+                <input type="radio" name="provider" value="TMOBILE"/>
+                <span> T-Mobile</span>
+            </div>
+            <div>
+                <input type="radio" name="provider" value="SPRINT"/>
+                <span> Sprint</span>
+            </div>
+            </p>
+            <label>Your Phone Number</label>
+            <input type="text" class='alert-input phone-input' name="phone-input" placeholder="4013234567">
+        </div>
+        <button type="button" class="set-new-alert-button btn btn-lg">
+            <span>SET NEW ALERT</span>
+        </button>
+    </form>
+</div>
+
+
+<p>
+    {#    <img class="mainimg" src="/static/img/purple_background.jpg"/>#}
+</p>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 from flask import render_template
 from flask import Blueprint
 
-from hello_webapp.helpers import _log
+from hello_utilities.log_helper import _log
 from hello_webapp.test import get_test_objects, create_test_object
 
 

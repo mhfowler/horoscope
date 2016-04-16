@@ -44,6 +44,9 @@
       tags:
         - debug
 
+    - name: crontab to check alerts
+      cron: name="check alerts" minute="*" job="curl {{prod_url}}/get_all_tix/"
+
     - name: restart server and webapp
       command: /bin/true
       notify:

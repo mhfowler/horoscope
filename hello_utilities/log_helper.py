@@ -1,4 +1,4 @@
-from hello_webapp.slack_notify import slack_notify_message
+from hello_utilities.slack_helper import slack_notify_message
 
 
 def _log(message):
