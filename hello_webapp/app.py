@@ -13,7 +13,6 @@ from hello_webapp.helper_routes import get_hello_helpers_blueprint
 from hello_models.database import db_session
 from hello_models.models import FbAlert
 from hello_utilities.fb_event_checker import FbEventChecker
-from hello_utilities.slack_helper import slack_notify_message
 
 
 # paths
