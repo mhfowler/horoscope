@@ -93,7 +93,7 @@ class FbEventChecker:
                         self.db_session.commit()
                         _log('++ sending text to {phone_number}: {msg}'.format(
                             phone_number=self.to_phone_number,
-                            msg=message_text
+                            msg=message_text.encode('ascii', 'ignore')
                         ))
                         send_text(msg=message_text, to_phone_number=self.to_phone_number)
 
