@@ -45,7 +45,7 @@ def get_all_tix_endpoint():
         to_phone_number = alert.phone_number
         event_checker = FbEventChecker(db_session=db_session, fb_event_id=event_id, to_phone_number=to_phone_number)
         event_checker.check_for_ps1()
-        _log('++ checking for new posts for: {fb_id} - {phone_number}'.format(
+        _log('++ checking for new posts for: https://www.facebook.com/events/{fb_id}/ - {phone_number}'.format(
             fb_id=event_id,
             phone_number=to_phone_number
         ))
