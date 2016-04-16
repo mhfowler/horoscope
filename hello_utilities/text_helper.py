@@ -11,6 +11,7 @@ def send_text(msg, to_phone_number):
     server.starttls()
     server.login('maximusfowler@gmail.com', SECRETS_DICT['TEXT_SECRET'])
 
+    msg = msg.encode('ascii', 'ignore')
     message = MIMEText(msg)
     message['Date'] = formatdate()
     message['From'] = 'fishing_bot@gmail.com'
