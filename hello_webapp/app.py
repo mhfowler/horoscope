@@ -113,7 +113,16 @@ def error_handler_500(e):
     """
     exc_type, exc_value, exc_traceback = sys.exc_info()
     formatted_lines = traceback.format_exc()
-    _log('@channel: 500 error: {}'.format(e.message))
+    critical_error = True
+    # a couple errors to avoid
+    if 'MySQL server has gone away' in e.message:
+        critical_error = False
+    # log_message (with notification if it is critical)
+    log_message = '500 error: {}'.format(e.message)
+    if critical_error:
+        log_message = '@channel ' + log_message
+    # log the message
+    _log(log_message)
     _log(formatted_lines)
     raise e
 
